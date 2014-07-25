@@ -6,7 +6,7 @@ A simple boilerplate using GAE with Python, Dart and Polymer
 Status
 ------
 Currently the project is in a alpha stage. 
-I'm concentred to dart and polymler, I wanth to have shortly the GAE backend to perfrom authentication.
+I'm concentred to dart and polymler, I want to have shortly the GAE backend to perfrom authentication.
 
 Covered
 -------

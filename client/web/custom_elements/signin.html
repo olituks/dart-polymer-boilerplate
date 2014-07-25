@@ -1,0 +1,111 @@
+<link rel="import" href="packages/polymer/polymer.html">
+
+<link rel="import" href="packages/paper_elements/core_animated_pages.html">
+<link rel="import" href="packages/paper_elements/paper_input.html">
+<link rel="import" href="packages/paper_elements/paper_fab.html">
+<link rel="import" href="localized.html">
+
+<polymer-element name="signin-element">
+
+<template>
+  <style>
+    :host {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    #core_animated_pages {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      background-color: rgb(238, 238, 238);
+    }
+    #core_card {
+      width: 528px;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      border-bottom-left-radius: 2px;
+      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      padding: 14px;
+      background-color: rgb(255, 255, 255);
+    }
+    #section {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    
+    .social_login_btn{
+      background-size: contain;
+      height: 60px;
+      width: 246px;
+      margin: 3px;
+      border-radius: 4px;
+    }
+    
+    #gplus{
+      background-image: url(../img/g+.png); 
+    }
+    
+    #facebook{
+      background-image: url(../img/facebook.png); 
+    }
+    
+    #twitter{
+      background-image: url(../img/twitter.png); 
+    }
+    
+    #linkedin{
+      background-image: url(../img/linkedin.png); 
+    }
+    
+    #yahoo{
+      background-image: url(../img/yahoo.png); 
+    }
+    
+    #microsoft{
+      background-image: url(../img/microsoft.png); 
+    }
+  </style>
+  
+  <core-animated-pages id="core_animated_pages" selectedindex="0" notap>
+    <section id="section" layout horizontal active center-justified center>
+      <core-card id="core_card" layout vertical>
+        <p style="text-align: center;">{{labels['login']}}</p>
+        <section layout vertical active center-justified center>
+          <paper-input id="email_input" label="{{labels['input_email']}}" floatinglabel></paper-input>
+          <paper-input id="password_input" label="{{labels['input_password']}}" type="password" floatinglabel></paper-input>
+          <section layout horizontal end-justified>
+            <paper-fab id="paper_fab" icon="check"></paper-fab>
+          </section>
+        </section>
+        
+        <br>
+        <p style="text-align: center;">{{labels['social_login']}}</p>
+        <section id="social_login" layout horizontal active center-justified center>
+          <section id="social_login_left">
+            <div id="gplus" class="social_login_btn"></div>
+            <div id="facebook" class="social_login_btn"></div>
+            <div id="twitter" class="social_login_btn"></div>
+          </section>
+          
+          <section id="social_login_right">
+            <div id="linkedin" class="social_login_btn"></div>
+            <div id="yahoo" class="social_login_btn"></div>
+            <div id="microsoft" class="social_login_btn"></div>
+          </section>
+        </section>
+        
+      </core-card>
+    </section>
+  </core-animated-pages>
+  
+  <localized-element id="l10n" locale={{locale}} labels={{labels}}></localized-element>
+</template>
+
+<script type="application/dart" src="signin.dart"></script>
+
+</polymer-element>

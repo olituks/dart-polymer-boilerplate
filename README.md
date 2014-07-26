@@ -1,5 +1,5 @@
-Google App Engine-python-dart-polymer boilerplate
-=================================================
+Google App Engine-python-dart-polymer boilerplate (front end)
+=============================================================
 
 A simple boilerplate using Google App Engine with Python, Dart and Polymer
 

@@ -7,6 +7,7 @@ import 'package:polymer/polymer.dart';
 @CustomTag('about-page-element')
 class About extends PolymerElement {
   
+  @PublishedProperty(reflect: true) String locale;
   @observable Map labels = toObservable({
     'input_email': ''
   });

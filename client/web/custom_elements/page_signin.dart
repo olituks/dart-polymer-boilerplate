@@ -3,13 +3,11 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:polymer/polymer.dart';
-import "package:intl/intl_browser.dart";
 
 @CustomTag('signin-element')
 class Signin extends PolymerElement {
   
   @PublishedProperty(reflect: true) String locale;
-  
   @observable Map labels = toObservable({
     'input_email': '',
     'input_password': '',
@@ -21,18 +19,5 @@ class Signin extends PolymerElement {
   
   ready() {
     super.ready();
-    _getLocalFromNavigator();
-  }
-  
-  _getLocalFromNavigator(){
-    findSystemLocale().then((l){
-      switch (l) {
-        case 'fr':
-          locale = "fr";
-          break;
-        default:
-          locale = "en";
-      }
-    });
   }
 }

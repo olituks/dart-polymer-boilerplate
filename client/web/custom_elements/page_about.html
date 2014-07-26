@@ -43,8 +43,6 @@
     }
   </style>
   
-  <localized-element id="l10n" locale={{locale}} labels={{labels}}></localized-element>
-  
   <core-animated-pages id="core_animated_pages" selectedindex="0" notap>
     <section id="section" layout horizontal active center-justified center>
       <core-card id="core_card" layout center horizontal center-justified>
@@ -52,6 +50,8 @@
       </core_card>
     </section>
   </core-animated-pages>
+  
+  <localized-element id="l10n" locale={{locale}} labels={{labels}}></localized-element>
 </template>
 
 <script type="application/dart" src="page_about.dart"></script>

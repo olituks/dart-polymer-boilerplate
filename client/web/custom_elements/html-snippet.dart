@@ -6,39 +6,37 @@ import 'package:polymer/polymer.dart';
 import "package:intl/intl_browser.dart";
 import 'dart:html';
 
-@CustomTag('about-page-element')
-class Signin extends PolymerElement {
+@CustomTag('html-snippet-element')
+class Snippet extends PolymerElement {
   
-  @PublishedProperty(reflect: true) String locale;
+  @published var src;
   
-  @observable Map labels = toObservable({
-    'input_email': ''
-  });
-  
-  Signin.created() : super.created();
+  Snippet.created() : super.created();
   
   ready() {
     super.ready();
     _getLocalFromNavigator();
   }
   
+  String _locale;
   _getLocalFromNavigator(){
     findSystemLocale().then((l){
       switch (l) {
         case 'fr':
-          locale = l;
-          _getMainPage(l);
+          _locale = l;
+          _getHtmlSniped(l);
           break;
         default:
-          locale = "en";
-          _getMainPage(l);
+          _locale = "en";
+          _getHtmlSniped(l);
       }
     });
   }
   
-  _getMainPage(l){
-    var my_div = shadowRoot.querySelector('#main_page');
-    HttpRequest.getString("custom_elements/about_$l.html").then((result) {
+  _getHtmlSniped(l){
+    var my_div = shadowRoot.querySelector('#snippet');
+    var src_local = src.replaceFirst(new RegExp('locale'), _locale);
+    HttpRequest.getString(src_local).then((result) {
       my_div.setInnerHtml(result, 
                           validator: new NodeValidatorBuilder()
                             ..allowHtml5()

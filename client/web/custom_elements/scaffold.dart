@@ -32,6 +32,7 @@ class Scaffold extends PolymerElement{
   void attached() {
     super.attached();
 
+    /*Create menulist object and initialise all entry in the polymer menu*/
     var _menu_list;
     MenuList.create('menu_items.json').then((ml) {
       _menu_list = ml;
@@ -85,7 +86,7 @@ class Scaffold extends PolymerElement{
   
   _getDialogPage(l){
     var my_div = shadowRoot.querySelector('#dialog_main_page');
-    HttpRequest.getString("custom_elements/scaffold_dialog_$l.html").then((result) {
+    HttpRequest.getString("i18n/scaffold_dialog_$l.html").then((result) {
       my_div.setInnerHtml(result, 
                           validator: new NodeValidatorBuilder()
                             ..allowHtml5()
@@ -96,6 +97,7 @@ class Scaffold extends PolymerElement{
   }
 }
 
+/*MenuList object is use to menu definition in a external json file*/
 class MenuList {
   String path;
   Map my_json;

@@ -8,9 +8,7 @@ import 'package:polymer/polymer.dart';
 class About extends PolymerElement {
   
   @PublishedProperty(reflect: true) String locale;
-  @observable Map labels = toObservable({
-    'input_email': ''
-  });
+  @observable Map labels = toObservable({});
   
   About.created() : super.created();
 

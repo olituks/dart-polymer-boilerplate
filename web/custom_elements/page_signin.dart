@@ -8,12 +8,7 @@ import 'package:polymer/polymer.dart';
 class Signin extends PolymerElement {
   
   @PublishedProperty(reflect: true) String locale;
-  @observable Map labels = toObservable({
-    'input_email': '',
-    'input_password': '',
-    'social_login': '',
-    'login': ''
-  });
+  @observable Map labels = toObservable({});
   
   Signin.created() : super.created();
   

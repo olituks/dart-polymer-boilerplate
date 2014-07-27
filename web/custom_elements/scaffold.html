@@ -13,6 +13,8 @@
 <link rel="import" href="packages/core_elements/core_scaffold.html">
 <link rel="import" href="packages/paper_elements/paper_dialog_transition.html">
 <link rel="import" href="packages/paper_elements/paper_dialog.html">
+<link rel="import" href="packages/paper_elements/paper_item.html">
+<link rel="import" href="packages/paper_elements/paper_menu_button.html">
 <link rel="import" href="page_signin.html">
 <link rel="import" href="page_about.html">
 
@@ -39,7 +41,7 @@
         color: rgb(255, 255, 255);
         background-color: rgb(79, 125, 201);
       }
-      #core_menu {
+      .menu_items {
         font-size: 16px;
       }
       #core_selector {
@@ -78,9 +80,11 @@
           <div id="app_title">
             My App
           </div>
-          <core-menu-button icon="more-vert" selected="0" valueattr="name" id="core_menu_button"></core-menu-button>
+          <paper-menu-button icon="more-vert" id="paper_menu_button" class="menu_items">
+            <div></div>
+          </paper-menu-button>
         </core-toolbar>
-        <core-menu id="core_menu_item" theme="core-light-theme"></core-menu>
+        <core-menu id="core_menu_item" theme="core-light-theme" class="menu_items"></core-menu>
       </core-header-panel>
       
       <!--right part-->

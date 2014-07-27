@@ -17,6 +17,8 @@ import 'package:paper_elements/paper_dialog.dart';
 @CustomTag('scaffold-toolbar-element')
 class Scaffold extends PolymerElement{
 
+  String _locale;
+
   void click_menu_item(String label, String main_page) {
     _setPageTitle(label);
     _setMainPage(main_page);
@@ -31,10 +33,25 @@ class Scaffold extends PolymerElement{
   @override
   void attached() {
     super.attached();
-
+    
+    /*Detect the browser language to set _locale variable*/
+    findSystemLocale().then((l){
+      switch (l) {
+        case 'fr':
+          _locale = l;
+          _loadExternalJsonMenuDescriptor();
+          break;
+        default:
+         _locale = "en";
+         _loadExternalJsonMenuDescriptor();
+      }
+    });
+  }
+  
+  _loadExternalJsonMenuDescriptor(){
     /*Create menulist object and initialise all entry in the polymer menu*/
     var _menu_list;
-    MenuList.create('menu_items.json').then((ml) {
+    MenuList.create('i18n/menu_items_${_locale}.json').then((ml) {
       _menu_list = ml;
       
       /*menu_list*/
@@ -50,12 +67,12 @@ class Scaffold extends PolymerElement{
       
       /*sub menu list*/
       addElementToSubMenu(list_value){
-        var newElement = new Element.tag('core-item');
+        var newElement = new Element.tag('paper-item');
         newElement
           ..setAttribute("icon", list_value["icon"])
           ..setAttribute("label", list_value["label"])
           ..onClick.listen((e) => click_sub_menu_item(list_value["dialog"]));
-        shadowRoot.querySelector('#core_menu_button').children.add(newElement);
+        shadowRoot.querySelector('#paper_menu_button').children.add(newElement);
       };
       _menu_list.my_json["sub_menu_list"].forEach(addElementToSubMenu);
     });
@@ -72,15 +89,7 @@ class Scaffold extends PolymerElement{
   
   _dialogDisplay(dialog){
     var my_dialog = shadowRoot.querySelector('#my_dialog') as PaperDialog;
-    findSystemLocale().then((l){
-      switch (l) {
-        case 'fr':
-          _getDialogPage(l);
-          break;
-        default:
-          _getDialogPage(l);
-      }
-    });
+    _getDialogPage(_locale);
     my_dialog.toggle();
   }
   

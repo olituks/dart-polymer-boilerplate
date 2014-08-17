@@ -4,7 +4,6 @@
 
 import 'package:polymer/polymer.dart';
 import 'dart:html';
-import 'dart:convert';
 
 @CustomTag('signin-element')
 class Signin extends PolymerElement {
@@ -14,43 +13,34 @@ class Signin extends PolymerElement {
   
   Signin.created() : super.created();
   
-  ready() {
-    super.ready();
-    _saveData2();
-  }
-  
-  void _saveData() {
-    HttpRequest request = new HttpRequest(); // create a new XHR
-  
-    // add an event handler that is called when the request finishes
-    request.onReadyStateChange.listen((_) {
-      if (request.readyState == HttpRequest.DONE &&
-          (request.status == 200 || request.status == 0)) {
-        // data saved OK.
-        print(request.responseText);
-      }
-    });
-  
-    // POST the data to the server
-    var url = "http://127.0.0.1:8080/savedata";
-    request.open("POST", url, async: false);
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  
-    /*String jsonData = JSON.encode({"language":"dart2"});*/
-    String jsonData = "language=dart2";
-    request.send(jsonData);
-  }
-  
-  void _saveData2() {
-    String url = "http://127.0.0.1:8080/savedata";
+  void signup(Event e, var details, Node target) {
+    String url = "https://127.0.0.1:8080/signup";
     HttpRequest request = new HttpRequest() 
       ..open("POST", url, async: true)
       ..setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
       ..responseType = "arraybuffer";
 
+    String datas = "username=olituks&email=olituks%40gmail.com&password=test&name=Olivier&lastname=Hubert";    
+    request.send(datas);
+  }
+  
+  void signin(Event e, var details, Node target) {
+    String email = $["email_input"].value;
+    String password = $["password_input"].value;
+    String url = "https://127.0.0.1:8080/signin";
     
-    String jsonData = JSON.encode({"test":"valuetest1"});
-    String datas = "datas=$jsonData";
+    HttpRequest request = new HttpRequest() 
+      ..open("POST", url, async: true)
+      ..setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+      ..responseType = "arraybuffer";
+
+    String datas = "email=$email&password=$password";
     request.send(datas);
   }
 }
+
+
+
+
+
+

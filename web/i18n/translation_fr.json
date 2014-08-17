@@ -2,5 +2,7 @@
   "input_email": "Votre adresse e-mail",
   "input_password": "Votre password",
   "social_login": "ou utilisez votre login social",
-  "login": "Pour vous connecter, vous pouvez utiliser votre e-mail et votre mot de passe"
+  "login": "Pour vous connecter, vous pouvez utiliser votre e-mail et votre mot de passe",
+  "sign-up": "Créer un compte",
+  "sign_in": "Connexion"
 }

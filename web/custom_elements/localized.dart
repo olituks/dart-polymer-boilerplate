@@ -30,6 +30,8 @@ class Localized extends PolymerElement {
     labels['input_password'] = l10n['input_password'];
     labels['social_login'] = l10n['social_login'];
     labels['login'] = l10n['login'];
+    labels['sign-up'] = l10n['sign-up'];
+    labels['sign_in'] = l10n['sign_in'];
   }
   
   List _locales = ['en', 'fr'];

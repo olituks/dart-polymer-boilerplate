@@ -1,8 +1,8 @@
 <link rel="import" href="packages/polymer/polymer.html">
 
-<link rel="import" href="packages/paper_elements/core_animated_pages.html">
+<link rel="import" href="packages/core_elements/core_animated_pages.html">
 <link rel="import" href="packages/paper_elements/paper_input.html">
-<link rel="import" href="packages/paper_elements/paper_fab.html">
+<link rel="import" href="packages/paper_elements/paper_button.html">
 <link rel="import" href="localized.html">
 
 <polymer-element name="signin-element">
@@ -69,6 +69,24 @@
     #microsoft{
       background-image: url(../img/microsoft.png); 
     }
+    
+    .colored_blue{
+      background: #4285f4;
+      color: #fff;
+    }
+    
+    .colored_blue:hover {
+      background: #2a56c6;
+    }
+    
+    .txt_blue{
+      color: #4285f4;
+    }
+    
+    .txt_blue:hover{
+      color: #2a56c6;
+    }
+    
   </style>
   
   <core-animated-pages id="core_animated_pages" selectedindex="0" notap>
@@ -79,7 +97,8 @@
           <paper-input id="email_input" label="{{labels['input_email']}}" floatinglabel></paper-input>
           <paper-input id="password_input" label="{{labels['input_password']}}" type="password" floatinglabel></paper-input>
           <section layout horizontal end-justified>
-            <paper-fab id="paper_fab" icon="check"></paper-fab>
+            <paper-button label="{{labels['sign-up']}}" id="paper_button" on-click="{{signup}}" class="txt_blue"></paper-button>
+            <paper-button label="{{labels['sign_in']}}" id="paper_button" on-click="{{signin}}" raisedbutton class="colored_blue"></paper-button>
           </section>
         </section>
         
@@ -109,3 +128,7 @@
 <script type="application/dart" src="page_signin.dart"></script>
 
 </polymer-element>
+
+
+
+
